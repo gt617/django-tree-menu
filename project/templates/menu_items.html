@@ -1,0 +1,15 @@
+<li class="
+    {% if node.is_active %}menu-item-active{% endif %}
+    {% if node.is_parent %}menu-item-parent{% endif %}
+">
+  <a href="{{ node.item.get_url }}">
+    {{ node.item.name }}
+  </a>
+  {% if node.has_child and node.children %}
+    <ul>
+      {% for child in node.children %}
+        {% include "menu_items.html" with node=child %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</li>
